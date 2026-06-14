@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    paths-ignore:
+    - '**.md'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: purcell/setup-emacs@master
+      with:
+        version: 29.1
+    - uses: actions/checkout@v6
+    - name: Run package-lint
+      run: make package-lint
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Emacs 26.1 is the minimum: it introduced the Flymake backend API.
+        emacs_version:
+          - 26.1
+          - 26.3
+          - 27.1
+          - 27.2
+          - 28.1
+          - 28.2
+          - 29.1
+          - snapshot
+    steps:
+    - uses: purcell/setup-emacs@master
+      with:
+        version: ${{ matrix.emacs_version }}
+    - uses: actions/checkout@v6
+    - name: Install pg_propre
+      # Builds from crates.io. To speed CI up you can instead download the
+      # prebuilt static Linux amd64 binary from the project's GitLab Releases
+      # page and place it on PATH.
+      run: cargo install pg_propre
+    - name: Run tests
+      run: make compile test
