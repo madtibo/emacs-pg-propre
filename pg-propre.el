@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2026  Thibaut Madelaine
 
-;; Author: Thibaut Madelaine
+;; Author: Thibaut Madelaine <madtibo@5432.tech>
 ;; Keywords: languages, tools
 ;; Homepage: https://github.com/madtibo/emacs-pg-propre
 ;; Package-Requires: ((emacs "26.1") (reformatter "0.3"))

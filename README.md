@@ -1,5 +1,9 @@
 # pg-propre.el
 
+[![MELPA](https://melpa.org/packages/pg-propre-badge.svg)](https://melpa.org/#/pg-propre)
+[![MELPA Stable](https://stable.melpa.org/packages/pg-propre-badge.svg)](https://stable.melpa.org/#/pg-propre)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+
 Format and lint PostgreSQL SQL inside Emacs using
 [`pg_propre`](https://gitlab.com/madtibo/pg_propre), a fast Rust SQL formatter
 and linter built on PostgreSQL's own parser.
@@ -22,7 +26,26 @@ This package provides:
 
 ## Installation
 
-Ensure `pg-propre.el` is on your `load-path` (and `reformatter` is installed),
+### MELPA
+
+Once available from [MELPA](https://melpa.org), install it with:
+
+```
+M-x package-install RET pg-propre RET
+```
+
+Or with `use-package`:
+
+```elisp
+(use-package pg-propre
+  :ensure t)
+```
+
+`reformatter` is pulled in automatically as a dependency.
+
+### Manual
+
+Ensure `pg-propre.el` and its dependency `reformatter` are on your `load-path`,
 then:
 
 ```elisp
@@ -88,4 +111,4 @@ emacs -Q -batch -l pg-propre.el -l pg-propre-tests.el \
 
 ## License
 
-GPL-3.0-or-later. See the headers in `pg-propre.el`.
+GPL-3.0-or-later. See [LICENSE](LICENSE) for the full text.
